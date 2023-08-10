@@ -1,0 +1,155 @@
+﻿GENOMICCONTROL ON 
+OVERLAP ON
+TRACKPOSITIONS ON
+AVERAGEFREQ ON
+MINMAXFREQ ON
+OUTFILE hetero_no_overlap_gel_finngenr8_ukbb_jbb_meta_analysis .tbl
+
+MARKERLABEL SNP
+ALLELELABELS Allele1 Allele2
+PVALUELABEL p.value
+EFFECTLABEL BETA
+WEIGHTLABEL N
+FREQLABEL AF_Allele2
+CHROMOSOMELABEL CHR
+POSITIONLABEL POS
+PROCESS gel_ss_for_metal_b38_cystic.txt
+
+
+MARKERLABEL SNP
+ALLELELABELS ref alt
+PVALUELABEL pval
+EFFECTLABEL beta
+WEIGHTLABEL DONTUSECOLUMN
+DEFAULTWEIGHT 341861
+FREQLABEL af_alt
+CHROMOSOMELABEL chrom
+POSITIONLABEL pos
+PROCESS finngenr8_cystic_b38_ss.txt
+
+MARKERLABEL SNP
+ALLELELABELS hm_other_allele hm_effect_allele
+PVALUELABEL p_value
+EFFECTLABEL hm_beta
+WEIGHTLABEL DONTUSECOLUMN
+DEFAULTWEIGHT 534580
+FREQLABEL hm_effect_allele_frequency
+CHROMOSOMELABEL hm_chrom
+POSITIONLABEL hm_pos
+PROCESS jbb_ukbb_b38_cystic_ss.tsv
+
+ANALYZE HETEROGENEITY
+
+
+###########################Using Standard error#############################
+
+SCHEME STDERR
+GENOMICCONTROL ON 
+AVERAGEFREQ ON
+MINMAXFREQ ON
+OUTFILE stderr_hetero_gel_finngenr8_ukbb_jbb_meta_analysis .tbl
+
+MARKERLABEL SNP
+ALLELELABELS Allele1 Allele2
+STDERR SE
+PVALUELABEL p.value
+EFFECTLABEL BETA
+WEIGHTLABEL N
+FREQLABEL AF_Allele2
+PROCESS gel_ss_for_metal_b38_cystic.txt
+
+
+MARKERLABEL SNP
+ALLELELABELS ref alt
+STDERR sebeta
+PVALUELABEL pval
+EFFECTLABEL beta
+WEIGHTLABEL DONTUSECOLUMN
+DEFAULTWEIGHT 341861
+FREQLABEL af_alt
+PROCESS finngenr8_cystic_b38_ss.txt
+
+MARKERLABEL SNP
+ALLELELABELS hm_other_allele hm_effect_allele
+PVALUELABEL p_value
+EFFECTLABEL hm_beta
+STDERR standard_error
+WEIGHTLABEL DONTUSECOLUMN
+DEFAULTWEIGHT 534580
+FREQLABEL hm_effect_allele_frequency
+PROCESS jbb_ukbb_b38_cystic_ss.tsv
+
+ANALYZE HETEROGENEITY
+
+################################################################################
+Running without heterogeneity
+
+GENOMICCONTROL ON 
+OUTFILE basic_analysis_no_hetero_no_overlap_gcystic_b38_meta_analysis .tbl
+
+MARKERLABEL SNP
+ALLELELABELS Allele1 Allele2
+PVALUELABEL p.value
+EFFECTLABEL BETA
+WEIGHTLABEL N
+FREQLABEL AF_Allele2
+CHROMOSOMELABEL CHR
+POSITIONLABEL POS
+PROCESS gel_ss_for_metal_b38_cystic.txt
+
+
+MARKERLABEL SNP
+ALLELELABELS ref alt
+PVALUELABEL pval
+EFFECTLABEL beta
+WEIGHTLABEL DONTUSECOLUMN
+DEFAULTWEIGHT 341861
+FREQLABEL af_alt
+CHROMOSOMELABEL chrom
+POSITIONLABEL pos
+PROCESS finngenr8_cystic_b38_ss.txt
+
+MARKERLABEL SNP
+ALLELELABELS hm_other_allele hm_effect_allele
+PVALUELABEL p_value
+EFFECTLABEL hm_beta
+WEIGHTLABEL DONTUSECOLUMN
+DEFAULTWEIGHT 534580
+FREQLABEL hm_effect_allele_frequency
+CHROMOSOMELABEL hm_chrom
+POSITIONLABEL hm_pos
+PROCESS jbb_ukbb_b38_cystic_ss.tsv
+
+ANALYZE
+
+
+
+
+
+################################################################################
+Running stderr without heterogeneity
+
+SCHEME STDERR
+GENOMICCONTROL ON 
+OUTFILE basic_stderr_b38_cystic_meta_analysis .tbl
+
+MARKERLABEL SNP
+ALLELELABELS Allele1 Allele2
+STDERR SE
+EFFECTLABEL BETA
+PROCESS gel_ss_for_metal_b38_cystic.txt
+
+
+MARKERLABEL SNP
+ALLELELABELS ref alt
+STDERR sebeta
+EFFECTLABEL beta
+PROCESS finngenr8_cystic_b38_ss.txt
+
+MARKERLABEL SNP
+ALLELELABELS hm_other_allele hm_effect_allele
+EFFECTLABEL hm_beta
+STDERR standard_error
+PROCESS jbb_ukbb_b38_cystic_ss.tsv
+
+ANALYZE
