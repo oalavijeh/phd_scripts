@@ -25,18 +25,11 @@ acat_row <- function(row) {
 result <- apply(ukbb_gel, 1, acat_row)
 final_table <- cbind(ukbb_gel, result)
 
-#metanalysis with Fishers
+#metanalysis 
 # load the dplyr package for data manipulation
 library(dplyr)
 
 # create a sample data frame
-df <- data.frame(
-  Gene = c("A", "B", "C", "D", "E"),
-  Pvalue = c(0.05, 0.02, 0.01, 0.04, 0.03),
-  pValue = c(0.01, 0.03, 0.05, 0.02, 0.04),
-  N1 = c(100, 150, 200, 125, 175), # sample size of cohort 1
-  N2 = c(150, 200, 250, 175, 225) # sample size of cohort 2
-)
 
 # calculate the effect sizes for each P-value
 final_table <- final_table %>%
@@ -47,7 +40,7 @@ final_table <- final_table %>%
     var2 = 1/N2
   )
 
-# calculate the combined effect size using Fisher's method
+# calculate the combined effect size 
 final_table <- final_table %>%
   mutate(
     Z = (Z1 * sqrt(var2) + Z2 * sqrt(var1)) / sqrt(var1 + var2),
